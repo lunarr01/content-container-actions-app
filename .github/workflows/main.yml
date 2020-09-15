@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: checkout # <-- a checkout is needed in order for our repository to go into that temporary dataspace
+      uses: actions/checkout@v2 # <-- for accessing the temporary dataspace
+    - name: Hello world action step
+      id: hello
+      uses: ./ # <-- The location of the action.yml file
+      with:
+        who-to-greet: 'Robert Luna'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
