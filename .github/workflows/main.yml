@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - name: checkout # <-- a checkout is needed in order for our repository to go into that temporary dataspace
+    - name: Checkout
       uses: actions/checkout@v2 # <-- for accessing the temporary dataspace
     - name: Hello world action step
       id: hello
